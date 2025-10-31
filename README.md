@@ -51,6 +51,6 @@ http://localhost:3000
 ```
 ## Link Demo
 
-Domain : [blog.enggipratama.my.id](https://blog.enggipratama.my.id)
+Domain : [blog.enggipratama.my.id](https://enggipratama.my.id)
 
 Vercel : [Link Vercel](https://blog-dashboard-nine-sandy.vercel.app)
