@@ -22,6 +22,11 @@ Clone Github repository:
 ```bash
 git clone https://github.com/enggipratama/blog-dashboard.git
 ```
+or
+Clone Gitlab repository:
+```bash
+git clone https://gitlab.com/enggipratama1/blog-dashboard.git
+```
 Go to the project folder:
 ```bash
 cd blog-dashboard
