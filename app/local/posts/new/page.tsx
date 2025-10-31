@@ -186,7 +186,7 @@ export default function NewPostPage() {
             border: "1px solid #ccc",
             p: 2,
             borderRadius: 1,
-            backgroundColor: theme === "dark" ? "#121212" : "#fafafa",
+            backgroundColor: theme === "dark" ? "dark" : "light",
           }}
         >
           <Typography variant="h6" gutterBottom>
@@ -196,7 +196,10 @@ export default function NewPostPage() {
             sx={{
               minHeight: 300,
               overflowY: "auto",
-              color: theme === "dark" ? "#fff" : "#000",
+              color: theme === "dark" ? "dark" : "light",
+              wordBreak: "break-word",
+              overflowWrap: "anywhere",
+              whiteSpace: "pre-wrap",
             }}
           >
             {body ? (

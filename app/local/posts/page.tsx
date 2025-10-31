@@ -65,21 +65,41 @@ export default function LocalPostsPage() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexWrap: "wrap",
           mb: 3,
+          gap: 1,
         }}
       >
-        <Typography variant="h4" sx={{ flex: 1, textAlign: "center" }}>
+        <Typography
+          variant="h4"
+          sx={{
+            flex: 1,
+            textAlign: "center",
+            wordBreak: "break-word",
+            overflowWrap: "anywhere",
+          }}
+        >
           Posts
         </Typography>
 
         <IconButton onClick={toggleTheme} color="inherit">
-      {theme === "light" ? <Brightness4 /> : <Brightness7 />}
-    </IconButton>
+          {theme === "light" ? <Brightness4 /> : <Brightness7 />}
+        </IconButton>
       </Box>
-      <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          mb: 2,
+          flexWrap: "wrap",
+          gap: 1,
+        }}
+      >
         <Button
           variant="contained"
           onClick={() => router.push("/local/posts/new")}
+          sx={{ flexShrink: 0 }}
         >
           Add New Post
         </Button>
@@ -102,14 +122,55 @@ export default function LocalPostsPage() {
       {paginatedPosts.length > 0 ? (
         <Grid container spacing={2}>
           {paginatedPosts.map((post) => (
-            <Grid size={{ xs: 12, md: 6 }} key={post.id}>
-              <Card sx={{ height: "100%" }}>
+            <Grid size={{xs: 12, sm:6}} key={post.id}>
+              <Card
+                sx={{
+                  height: "100%",
+                  overflow: "hidden",
+                  wordBreak: "break-word",
+                  overflowWrap: "anywhere",
+                  whiteSpace: "pre-wrap",
+                }}
+              >
                 <CardContent>
-                  <Typography variant="h6">{post.title}</Typography>
-                  <Typography variant="subtitle2">
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      mb: 1,
+                      wordBreak: "break-word",
+                      overflowWrap: "anywhere",
+                    }}
+                  >
+                    {post.title}
+                  </Typography>
+
+                  <Typography
+                    variant="subtitle2"
+                    sx={{
+                      color: "text.secondary",
+                      mb: 1,
+                      wordBreak: "break-word",
+                    }}
+                  >
                     Created: {new Date(post.createdAt).toLocaleString()}
                   </Typography>
-                  <Typography>{post.body.slice(0, 50)}...</Typography>
+
+                  <Typography
+                    sx={{
+                      wordBreak: "break-word",
+                      overflowWrap: "anywhere",
+                      whiteSpace: "normal",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                      mb: 1,
+                    }}
+                  >
+                    {post.body.slice(0, 200)}...
+                  </Typography>
+
                   <Button
                     sx={{ mt: 1 }}
                     size="small"
@@ -124,9 +185,10 @@ export default function LocalPostsPage() {
           ))}
         </Grid>
       ) : (
-        <Typography textAlign={"center"}>No posts are available</Typography>
+        <Typography textAlign="center">No posts are available</Typography>
       )}
 
+      {/* Pagination */}
       {totalPages > 1 && (
         <Box sx={{ display: "flex", justifyContent: "center", mt: 2, gap: 2 }}>
           <Button

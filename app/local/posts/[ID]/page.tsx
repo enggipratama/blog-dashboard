@@ -83,12 +83,20 @@ export default function PostDetailPage() {
         opacity: fadeOut ? 0 : 1,
       }}
     >
-      <Typography variant="h4" gutterBottom>
+      <Typography
+        variant="h5"
+        sx={{
+          mb: 1,
+          wordBreak: "break-word",
+          overflowWrap: "anywhere",
+        }}
+      >
         {post.title}
       </Typography>
       <Typography variant="subtitle2" gutterBottom>
         Created at: {new Date(post.createdAt).toLocaleString()}
       </Typography>
+
       <Box
         sx={{
           border: "1px solid #ccc",
@@ -96,6 +104,10 @@ export default function PostDetailPage() {
           p: 2,
           mb: 2,
           minHeight: 200,
+          overflowX: "auto",
+          wordBreak: "break-word",
+          overflowWrap: "anywhere",
+          whiteSpace: "pre-wrap",
         }}
       >
         <ReactMarkdown>{post.body}</ReactMarkdown>
